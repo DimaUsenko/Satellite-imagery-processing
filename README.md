@@ -17,7 +17,7 @@
 Примеры работы программы 
 -----
 
-  - San Francisco ![Screenshot](SanFrancisco.png)
+  - San Francisco\n![Screenshot](SanFrancisco.png)
 
   - San Joze ![Screenshot](SanJoze.png)
 
