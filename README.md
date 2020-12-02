@@ -17,15 +17,21 @@
 Примеры работы программы 
 -----
 
-  - San Francisco\n![Screenshot](SanFrancisco.png)
+  - San Francisco  
+  
+  ![Screenshot](SanFrancisco.png)
 
-  - San Joze ![Screenshot](SanJoze.png)
+  - San Joze 
+  
+  ![Screenshot](SanJoze.png)
 
   - Santa Cruz
-    ![Screenshot](SantaCruz.png)
+   
+  ![Screenshot](SantaCruz.png)
 
   - Concord
-    ![Screenshot](Concord.png)
+  
+   ![Screenshot](Concord.png)
 
 
 
