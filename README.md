@@ -141,32 +141,16 @@ system contains rules that depend on proper behavior of tools like "cp
 force make to treat them properly.  See the manual for details.
 
 
-Пример работы программы 
+Примеры работы программы 
 -----
 
   - ![Screenshot](SanFrancisco.png)
 
-  - See README.VMS for details about GNU Make on OpenVMS.
+  - ![Screenshot](SanJoze.png)
 
-  - See README.Amiga for details about GNU Make on AmigaDOS.
+  - ![Screenshot](SantaCruz.png)
 
-  - See README.W32 for details about GNU Make on Windows NT, 95, or 98.
+  - ![Screenshot](Concord.png)
 
-  - See README.DOS for compilation instructions on MS-DOS and MS-Windows
-    using DJGPP tools.
-
-    A precompiled binary of the MSDOS port of GNU Make is available as part
-    of DJGPP; see the WWW page http://www.delorie.com/djgpp/ for more
-    information.
-
-    The Cygwin project maintains its own port of GNU make.  That port may have
-    patches which are not present in this version.  If you are using Cygwin
-    you should use their version of GNU make, and if you have questions about
-    it you should start by asking on those mailing lists and forums.
-
-Please note there are two _separate_ ports of GNU make for Microsoft
-systems: a native Windows tool built with (for example) MSVC or Cygwin,
-and a DOS-based tool built with DJGPP.  Please be sure you are looking
-at the right README!
 
 
