@@ -141,11 +141,10 @@ system contains rules that depend on proper behavior of tools like "cp
 force make to treat them properly.  See the manual for details.
 
 
-Ports
+Пример работы программы 
 -----
 
-  - See README.customs for details on integrating GNU make with the
-    Customs distributed build environment from the Pmake distribution.
+  - ![Screenshot](SanFrancisco.png)
 
   - See README.VMS for details about GNU Make on OpenVMS.
 
@@ -170,19 +169,4 @@ systems: a native Windows tool built with (for example) MSVC or Cygwin,
 and a DOS-based tool built with DJGPP.  Please be sure you are looking
 at the right README!
 
-
--------------------------------------------------------------------------------
-Copyright (C) 1988-2020 Free Software Foundation, Inc.
-This file is part of GNU Make.
 
-GNU Make is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software
-Foundation; either version 3 of the License, or (at your option) any later
-version.
-
-GNU Make is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with
-this program.  If not, see <http://www.gnu.org/licenses/>.
