@@ -87,7 +87,7 @@ def make(POINT):
         10)
     cv2.putText(
         img,
-        'City lat lon: {}, {}'.format(POINT[0], POINT[0]),
+        'City lat lon: {}, {}'.format(POINT[0], POINT[1]),
         (150, 150),
         cv2.FONT_HERSHEY_SIMPLEX,
         4,
