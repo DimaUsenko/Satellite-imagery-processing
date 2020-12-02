@@ -1,145 +1,18 @@
-This directory contains the %VERSION% release of GNU Make.
+Программа предназначена для обозначения на снимке со спутника города с заданными координатам.
 
-See the file NEWS for the user-visible changes from previous releases.
-In addition, there have been bugs fixed.
+Для работы программы требуется разархивировать снимок, т.к github не ползволяет загружать файлы размером больше 25 мб.
 
-Please check the system-specific notes below for any caveats related to your
-operating system.
-
-If you are trying to build GNU make from a Git clone rather than a downloaded
-source distribution, see the README.git file for instructions.
-
-For source distribution building and installation instructions, see the file
-INSTALL.
-
-If you need to build GNU Make and have no other 'make' program to use, you can
-use the shell script 'build.sh' instead.  To do this, first run 'configure' as
-described in INSTALL.  Then, instead of typing 'make' to build the program,
-type 'sh build.sh'.  This should compile the program in the current directory.
-Then you will have a Make program that you can use for './make install', or
-whatever else.
-
-Some systems' Make programs cannot process the Makefile for GNU Make.  If you
-get errors from your system's Make when building GNU Make, try using
-'build.sh' instead.
-
-
-GNU Make is free software.  See the file COPYING for copying conditions.
-GNU Make is copyright by the Free Software Foundation.  Copyright notices
-condense sequential years into a range; e.g. "1987-1994" means all years
-from 1987 to 1994 inclusive.
-
-Downloading
+Алгоритм работы
 -----------
 
-GNU Make can be obtained in many different ways.  See a description here:
+  - Функция get_mean парсит MTL файл и записывает в переменные значения долготы и широты для каждого угла снимка
+  - Рассчитываются значения дельты по долготе и широте на спутнике, также значения долготы и широты по краям снимка усредняются, т.к. снимок выполняется практически точно по линиям мередиан и параллелей 
+  - Функция get_point получает значения точек в пикселях, которые помогут получить местоположение искомого города. С точки зрения геометрии - проводятся по прямой через каждую из двух точек, перпендикулярно краям снимков, а точка пересечения этих прямх и будет искомой точкой центра города.
 
-  http://www.gnu.org/software/software.html
+Геометрия
+-----
 
-
-Documentation
--------------
-
-GNU make is fully documented in the GNU Make manual, which is contained
-in this distribution as the file make.texinfo.  You can also find
-on-line and preformatted (PostScript and DVI) versions at the FSF's web
-site.  There is information there about ordering hardcopy documentation.
-
-  http://www.gnu.org/
-  http://www.gnu.org/doc/doc.html
-  http://www.gnu.org/manual/manual.html
-
-
-Development
------------
-
-GNU Make development is hosted by Savannah, the FSF's online development
-management tool.  Savannah is here:
-
-  http://savannah.gnu.org
-
-And the GNU Make development page is here:
-
-  http://savannah.gnu.org/projects/make/
-
-You can find most information concerning the development of GNU Make at
-this site.
-
-
-Bug Reporting
--------------
-
-You can send GNU make bug reports to <bug-make@gnu.org>.  Please see the
-section of the GNU make manual entitled 'Problems and Bugs' for
-information on submitting useful and complete bug reports.
-
-You can also use the online bug tracking system in the Savannah GNU Make
-project to submit new problem reports or search for existing ones:
-
-  http://savannah.gnu.org/bugs/?group=make
-
-If you need help using GNU make, try these forums:
-
-  help-make@gnu.org
-  help-utils@gnu.org
-  news:gnu.utils.help
-  news:gnu.utils.bug
-
-
-Git Access
-----------
-
-The GNU make source repository is available via Git from the GNU Savannah Git
-server; look here for details:
-
-  http://savannah.gnu.org/git/?group=make
-
-Please note: you won't be able to build GNU make from Git without installing
-appropriate maintainer's tools, such as GNU m4, automake, autoconf, Perl, GNU
-make, and GCC.
-
-See the README.git file for instructions on how to build GNU make once these
-tools are available.  We make no guarantees about the contents or quality of
-the latest code in the Git repository: it is not unheard of for code that is
-known to be broken to be checked in.  Use at your own risk.
-
-
-System-specific Notes
----------------------
-
-It has been reported that the XLC 1.2 compiler on AIX 3.2 is buggy such
-that if you compile make with 'cc -O' on AIX 3.2, it will not work
-correctly.  It is said that using 'cc' without '-O' does work.
-
-The standard /bin/sh on SunOS 4.1.3_U1 and 4.1.4 is broken and cannot be
-used to configure GNU make.  Please install a different shell such as
-bash or pdksh in order to run "configure".  See this message for more
-information:
-  http://mail.gnu.org/archive/html/bug-autoconf/2003-10/msg00190.html
-
-One area that is often a problem in configuration and porting is the code
-to check the system's current load average.  To make it easier to test and
-debug this code, you can do 'make check-loadavg' to see if it works
-properly on your system.  (You must run 'configure' beforehand, but you
-need not build Make itself to run this test.)
-
-Another potential source of porting problems is the support for large
-files (LFS) in configure for those operating systems that provide it.
-Please report any bugs that you find in this area.  If you run into
-difficulties, then as a workaround you should be able to disable LFS by
-adding the '--disable-largefile' option to the 'configure' script.
-
-On systems that support micro- and nano-second timestamp values and
-where stat(2) provides this information, GNU make will use it when
-comparing timestamps to get the most accurate possible result.  However,
-note that many current implementations of tools that *set* timestamps do
-not preserve micro- or nano-second granularity.  This means that "cp -p"
-and other similar tools (tar, etc.) may not exactly duplicate timestamps
-with micro- and nano-second granularity on some systems.  If your build
-system contains rules that depend on proper behavior of tools like "cp
--p", you should consider using the .LOW_RESOLUTION_TIME pseudo-target to
-force make to treat them properly.  See the manual for details.
-
+  - 
 
 Примеры работы программы 
 -----
