@@ -19,7 +19,7 @@
   - Рассчитываем координаты точки (Mx,My) в пикселях
   -
   
-  ![Screenshot](Explain.png)
+  ![Screenshot](explain.png)
   
 Примеры работы программы 
 -----
