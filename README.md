@@ -17,13 +17,17 @@
 Примеры работы программы 
 -----
 
-  - ![Screenshot](SanFrancisco.png)
+  - 
+    ![Screenshot](SanFrancisco.png)
 
-  - ![Screenshot](SanJoze.png)
+  - 
+    ![Screenshot](SanJoze.png)
 
-  - ![Screenshot](SantaCruz.png)
+  - 
+    ![Screenshot](SantaCruz.png)
 
-  - ![Screenshot](Concord.png)
+  - 
+    ![Screenshot](Concord.png)
 
 
 
