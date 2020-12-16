@@ -1,5 +1,6 @@
 import cv2
-import overpass
+#import overpass
+import numpy as np
 
 E = -600, 550 #Погрешность, вычисленная опытным путем
 
@@ -7,6 +8,9 @@ k1=1483, 24 #координаты крайних точек в пикселях
 k2=7671, 1100
 k3=6300,7112
 k4=39,6023
+
+screen_res = 1280, 720
+
 
 def get_mean(word):
     """Парсер для нахождения значения углов"""
@@ -35,17 +39,16 @@ def get_point(p1,p2,coeff):
 
 def show_result(result):
     """Выводит изображение в удобном разрешении"""
-    screen_res = 1280, 720
     scale_width = screen_res[0] / result.shape[1]
     scale_height = screen_res[1] / result.shape[0]
     scale = min(scale_width, scale_height)
     window_width = int(result.shape[1] * scale)
     window_height = int(result.shape[0] * scale)
 
-    cv2.namedWindow('dst_rt', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('dst_rt', window_width, window_height)
+    cv2.namedWindow('Ndvi', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('Ndvi', window_width, window_height)
 
-    cv2.imshow('dst_rt', result)
+    cv2.imshow('Ndvi', result)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
@@ -76,7 +79,9 @@ def make(POINT):
     # img = cv2.line(img, (k1[0], k1[ 1]), (int(m1[0]), int(m1[1])), (0, 255, 0), 10) #векторы
     # img = cv2.line(img, (k4[0], k4[1]), (int(m2[0]), int(m2[1])), (0, 255, 0), 10)
 
-    img = cv2.circle(img, (m1[0] + E[0], m2[1] + E[1]), 500, (0, 0, 255), thickness=10)
+    answer = (m1[0] + E[0]),(m2[1] + E[1])
+
+    #img = cv2.circle(img, (answer[0], answer[1]), 500, (0, 0, 255), thickness=10)
     cv2.putText(
         img,
         POINT[2],  # text
@@ -113,21 +118,59 @@ def make(POINT):
         img,
         'Point coordinates: {}, {}'.format(m1, m2),  (150, 750),cv2.FONT_HERSHEY_SIMPLEX,4,(255, 255, 255),10)
 
+    cut_list = [(answer[0] - 1000, answer[1] - 1000), (answer[0] + 1000, answer[1] - 1000),
+                (answer[0] + 1000, answer[1] + 1000), (answer[0] - 1000, answer[1] + 1000)]
+
+    img = cv2.line(img, cut_list[0], cut_list[1], (0,0,255), 15)
+    img = cv2.line(img, cut_list[1], cut_list[2], (0,0,255), 15)
+    img = cv2.line(img, cut_list[2], cut_list[3], (0,0,255), 15)
+    img = cv2.line(img, cut_list[3], cut_list[0], (0,0,255), 15)
+
     show_result(img)
 
+    return answer
+
+
+def cut_image(image,y1,y2,x1,x2):
+    img = cv2.imread(image)
+    crop_img = img[y1:y2, x1:x2]
+    return crop_img
+
+def add_colormap(gr, colormap):
+     return cv2.LUT((gr * 256).astype("uint8"), colormap.astype("uint8"));
+
 if __name__ == '__main__':
+
     '''Поинты основных городов:
         POINT = 36.958671131530316, -122.03887939453126, 'Santa Cruz'
         #POINT = 37.326488613342086, -121.89880371093751 ,'San Joze'
         #POINT = 37.97018468810549, -122.04986572265626 ,'Concord'
         #POINT = 37.779026, -122.419906 ,'San Francisco'
         '''
-    POINT = 36.958671131530316, -122.03887939453126, 'Santa Cruz'
+    POINT = 37.779026, -122.419906 ,'San Francisco'
 
     # city = input('Введите название города: ') #Работает не для всех городов
     # POINT = get_city_coordinates(city)[1], get_city_coordinates(city)[0], city
 
-    make(POINT)
+    a=make(POINT)
+
+    y1,y2,x1,x2 = a[1]-1000,a[1]+1000,a[0]-1000,a[0]+1000 #координаты обрезанного города
+
+    cut_image("LE07_L1TP_044034_20021222_20160927_01_T1_B1.TIF",y1,y2,x1,x2)
+
+    red_img = cut_image('LE07_L1TP_044034_20021222_20160927_01_T1_B3.tif',y1,y2,x1,x2)
+    nir_img = cut_image('LE07_L1TP_044034_20021222_20160927_01_T1_B4.tif',y1,y2,x1,x2)
+
+    nir_mat_float = red_img.astype(float)
+    red_mat_float = nir_img.astype(float)
+
+    gr = (np.divide(np.subtract(nir_mat_float, red_mat_float), np.add(nir_mat_float, red_mat_float)) + 1.) / 2.
+
+    colormap = cv2.imread('colormap2.png')
+    final = add_colormap(gr, colormap)
+
+    show_result(final)
+
 
 
 
