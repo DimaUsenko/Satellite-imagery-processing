@@ -2,8 +2,6 @@ import cv2
 #import overpass
 import numpy as np
 
-E = -600, 550 #Погрешность, вычисленная опытным путем
-
 k1=1483, 24 #координаты крайних точек в пикселях
 k2=7671, 1100
 k3=6300,7112
@@ -79,7 +77,7 @@ def make(POINT):
     # img = cv2.line(img, (k1[0], k1[ 1]), (int(m1[0]), int(m1[1])), (0, 255, 0), 10) #векторы
     # img = cv2.line(img, (k4[0], k4[1]), (int(m2[0]), int(m2[1])), (0, 255, 0), 10)
 
-    answer = (m1[0] + E[0]),(m2[1] + E[1])
+    answer = (m1[0] -650),(m2[1] + 550)
 
     #img = cv2.circle(img, (answer[0], answer[1]), 500, (0, 0, 255), thickness=10)
     cv2.putText(
