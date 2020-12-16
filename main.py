@@ -37,6 +37,7 @@ def get_point(p1,p2,coeff):
 
 def show_result(result):
     """Выводит изображение в удобном разрешении"""
+    
     scale_width = screen_res[0] / result.shape[1]
     scale_height = screen_res[1] / result.shape[0]
     scale = min(scale_width, scale_height)
@@ -52,11 +53,13 @@ def show_result(result):
 
 def get_city_coordinates(city):
     '''Получаем координаты города'''
+    
     api = overpass.API()
     response = api.get('node["name"="{}"]'.format(city))
     return response['features'][0]['geometry']['coordinates']
 
 def make(POINT):
+    
     CORNER_UL = get_mean('CORNER_UL_LAT_PRODUCT'), get_mean('CORNER_UL_LON_PRODUCT')
     CORNER_UR = get_mean('CORNER_UR_LAT_PRODUCT'), get_mean('CORNER_UR_LON_PRODUCT')
     CORNER_LL = get_mean('CORNER_LL_LAT_PRODUCT'), get_mean('CORNER_LL_LON_PRODUCT')
@@ -131,11 +134,13 @@ def make(POINT):
 
 
 def cut_image(image,y1,y2,x1,x2):
+                     
     img = cv2.imread(image)
     crop_img = img[y1:y2, x1:x2]
     return crop_img
 
 def add_colormap(gr, colormap):
+                     
      return cv2.LUT((gr * 256).astype("uint8"), colormap.astype("uint8"));
 
 if __name__ == '__main__':
