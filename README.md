@@ -61,6 +61,30 @@ NDVI
   
   ![Screenshot](NDVI_example1.png)
 
+Расчёт NDVI при помощи библиотеки Rasterio
+-----
+
+  - Rasterio: https://rasterio.readthedocs.io/en/latest/intro.html
+  
+  -Исполняемый файл: rasterio_ndvi.py
+  
+  -Можно использовать как альтернативный вариант open-cv, емкий код, а также преймущество в использовании colormap без предварительной загрузки, построение гистограмм
+  
+  
+Примеры расчёта NDVI при помощи Rasterio
+-----
+  
+  - Colormap = RdYlGn
+  
+  ![Screenshot](ndvi_rasterio_example.png)
+  
+  -Гистограмма распределения значений
+  
+  ![Screenshot](hist1.png)
+  
+  - Colormap = viridis
+  
+  ![Screenshot](ndvi_rasterio_example2.png)
 
 
 
