@@ -121,10 +121,11 @@ def make(POINT):
     cut_list = [(answer[0] - 1000, answer[1] - 1000), (answer[0] + 1000, answer[1] - 1000),
                 (answer[0] + 1000, answer[1] + 1000), (answer[0] - 1000, answer[1] + 1000)]
 
-    img = cv2.line(img, cut_list[0], cut_list[1], (0,0,255), 15)
-    img = cv2.line(img, cut_list[1], cut_list[2], (0,0,255), 15)
-    img = cv2.line(img, cut_list[2], cut_list[3], (0,0,255), 15)
-    img = cv2.line(img, cut_list[3], cut_list[0], (0,0,255), 15)
+    img = cv2.circle(img, (answer[0], answer[1]), 500, (0, 0, 255), thickness=10
+    #img = cv2.line(img, cut_list[0], cut_list[1], (0,0,255), 15)
+    #img = cv2.line(img, cut_list[1], cut_list[2], (0,0,255), 15)
+    #img = cv2.line(img, cut_list[2], cut_list[3], (0,0,255), 15)
+    #img = cv2.line(img, cut_list[3], cut_list[0], (0,0,255), 15)
 
     show_result(img)
 
