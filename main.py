@@ -85,7 +85,7 @@ def make(POINT):
     #img = cv2.circle(img, (answer[0], answer[1]), 500, (0, 0, 255), thickness=10)
     cv2.putText(
         img,
-        POINT[2],  # text
+        POINT[2],  
         (m1[0] + 500, m2[1] + 500),
         cv2.FONT_HERSHEY_SIMPLEX,
         8,
