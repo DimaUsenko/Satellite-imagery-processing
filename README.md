@@ -28,19 +28,19 @@
 
   - San Francisco  
   
-  ![Screenshot](SanFrancisco.png)
+  ![Screenshot](/templates/SanFrancisco.png)
 
   - San Joze 
   
-  ![Screenshot](SanJoze.png)
+  ![Screenshot](/templates/SanJoze.png)
 
   - Santa Cruz
    
-  ![Screenshot](SantaCruz.png)
+  ![Screenshot](/templates/SantaCruz.png)
 
   - Concord
   
-   ![Screenshot](Concord.png)
+   ![Screenshot](/templates/Concord.png)
    
 ### Часть 2
 NDVI
@@ -52,14 +52,14 @@ NDVI
   - Для расчёта: открываем при помощи библиотеки opencv снимки со спектров B3 и B4 как матрицы типа float, выполняем операции с матрицами изображений по формуле при помощи библиотеки numpy. Далее матрицу переводим в grayscale изображение и добавляем colormap при помощи метода LUT библиотеки opencv
   - Возможные варианты colormap:
   
-  ![Screenshot](colormaps.jpg)
+  ![Screenshot](/templates/colormaps.jpg)
   
 Примеры расчёта NDVI
 -----
 
   -Для San Francisco с нанесением colormap1 (RdYlGn)
   
-  ![Screenshot](NDVI_example1.png)
+  ![Screenshot](/templates/NDVI_example1.png)
 
 Расчёт NDVI при помощи библиотеки Rasterio
 -----
@@ -76,15 +76,15 @@ NDVI
   
   - Colormap = RdYlGn
   
-  ![Screenshot](ndvi_rasterio_example.png)
+  ![Screenshot](/templates/ndvi_rasterio_example.png)
   
   -Гистограмма распределения значений
   
-  ![Screenshot](hist1.png)
+  ![Screenshot](/templates/hist1.png)
   
   - Colormap = viridis
   
-  ![Screenshot](ndvi_rasterio_example2.png)
+  ![Screenshot](/templates/ndvi_rasterio_example2.png)
 
 
 
