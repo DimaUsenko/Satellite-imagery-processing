@@ -58,7 +58,7 @@ NDVI
 -----
   -Для San Francisco с нанесением colormap3 (qz_ndvi, которая даётся за "базовую" с сайта gis-lab)
   
-  ![Screenshot](/templates/NDVI_example3.png)
+  ![Screenshot](/templates/NDVI_example2.png)
   
   -Для San Francisco с нанесением colormap1 (RdYlGn)
   
