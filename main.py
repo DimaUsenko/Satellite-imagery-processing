@@ -162,10 +162,10 @@ if __name__ == '__main__':
     red_img = cut_image('LE07_L1TP_044034_20021222_20160927_01_T1_B3.tif',y1,y2,x1,x2)
     nir_img = cut_image('LE07_L1TP_044034_20021222_20160927_01_T1_B4.tif',y1,y2,x1,x2)
 
-    nir_mat_float = red_img.astype(float)
-    red_mat_float = nir_img.astype(float)
+    red_img = (cut_image('LE07_L1TP_044034_20021222_20160927_01_T1_B3.tif',y1,y2,x1,x2)).astype(float)
+    nir_img = (cut_image('LE07_L1TP_044034_20021222_20160927_01_T1_B4.tif',y1,y2,x1,x2)).astype(float)
 
-    gr = (np.divide(np.subtract(nir_mat_float, red_mat_float), np.add(nir_mat_float, red_mat_float)) + 1.) / 2.
+    gr = (np.divide(np.subtract(nir_img, red_img), np.add(nir_img, red_img)) + 1.) / 2.
 
     colormap = cv2.imread('colormap2.png')
     final = add_colormap(gr, colormap)
