@@ -56,7 +56,10 @@ NDVI
   
 Примеры расчёта NDVI
 -----
-
+  -Для San Francisco с нанесением colormap3 (qz_ndvi, которая даётся за "базовую" с сайта gis-lab)
+  
+  ![Screenshot](/templates/NDVI_example3.png)
+  
   -Для San Francisco с нанесением colormap1 (RdYlGn)
   
   ![Screenshot](/templates/NDVI_example1.png)
